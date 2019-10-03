@@ -62,8 +62,14 @@
 							const preview= document.createElement('div');
 							preview.classList.add('article-preview','clickable');
 							preview.addEventListener('click',()=>{visit(page);});
-							preview.append(json.title.cloneNode(true));
-							preview.append(json.headline);
+						    preview.append(((node) => {
+                                                        node.classList.add('preview-title');
+                                                        return node;
+                                                    })(json.title.cloneNode(true)));
+						    preview.append(((node) => {
+                                                        node.classList.add('preview-headline');
+                                                        return node;
+                                                    })(json.headline));
 							previewList.append(preview);
 						})
 					))),
@@ -89,7 +95,7 @@
 		body {
 			margin: 0;
 			min-height:100vh;
-			background-color:lightgreen;
+			background-color:white;
 		}
 		iframe {
 			border-width:0px;
@@ -105,7 +111,7 @@
 		#menu {
 			flex:0 1 auto;
 			color:white;
-			background-color:darkgreen;
+			background-color:#0036ac;
 			align-items:stretch;
 			overflow:auto;
 			text-align:center;
@@ -125,37 +131,56 @@
 			color:white;
 			text-align:center;
 			display:block;
-			font-size:1.5em;
+			font-size:4em;
 			padding:24px;
-			background-color:green;
+			background-color:#001032;
 		}
 		.clickable {
 			cursor: pointer;
 		}
 		.article-preview {
 			text-align:center;
-			background-color:#042069;
-			color:white;
+			/* background-color:#0036ac; */
+			/* color:white; */
 			margin: 10px;
 			padding: 10px;
-			border-radius:10px;
+			align-self: center;
+                        border-bottom-width: 3pt;
+                        border-bottom-color: white;
+                        border-bottom-style: solid;
+                        transition: 0.5s border-bottom-color;
+		}
+		.article-preview:hover {
+			text-align:center;
+			margin: 10px;
+			padding: 10px;
+                        border-bottom-width: 3pt;
+                        border-bottom-color: #00a6bc;
+                        border-bottom-style: solid;
 			align-self: center;
 		}
+                .preview-title {
+                    font-size: 2em;
+                }
+                .preview-title {
+                    font-size: 1.5em;
+                }
 		#menu div {
 			cursor: pointer;
 			padding: 10px;
 			/*height:auto;*/
 			margin: 10px;
 			display: inline-block;
-			background-color:green;
+			background-color:#00a6bc;
 			border-radius:10px;
+                        transition: 0.5s background-color;
 		}
 		#menu div:hover {
-			background-color:slateblue;
+		    background-color:#ff7000;
 		}
 		#title {
 			text-align:center;
-			font-size:2em;
+			font-size:3em;
 		}
 		#page {
 			align-items:center;
