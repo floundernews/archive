@@ -62,14 +62,14 @@
 							const preview= document.createElement('div');
 							preview.classList.add('article-preview','clickable');
 							preview.addEventListener('click',()=>{visit(page);});
-						    preview.append(((node) => {
-                                                        node.classList.add('preview-title');
-                                                        return node;
-                                                    })(json.title.cloneNode(true)));
-						    preview.append(((node) => {
-                                                        node.classList.add('preview-headline');
-                                                        return node;
-                                                    })(json.headline));
+							preview.append(((node)=>{
+								node.classList.add('preview-title');
+								return node;
+							})(json.title.cloneNode(true)));
+							preview.append(((node)=>{
+								node.classList.add('preview-headline');
+								return node;
+							})(json.headline));
 							previewList.append(preview);
 						})
 					))),
@@ -145,26 +145,26 @@
 			margin: 10px;
 			padding: 10px;
 			align-self: center;
-                        border-bottom-width: 3pt;
-                        border-bottom-color: white;
-                        border-bottom-style: solid;
-                        transition: 0.5s border-bottom-color;
+			border-bottom-width: 3pt;
+			border-bottom-color: white;
+			border-bottom-style: solid;
+			transition: 0.5s border-bottom-color;
 		}
 		.article-preview:hover {
 			text-align:center;
 			margin: 10px;
 			padding: 10px;
-                        border-bottom-width: 3pt;
-                        border-bottom-color: #00a6bc;
-                        border-bottom-style: solid;
+			border-bottom-width: 3pt;
+			border-bottom-color: #00a6bc;
+			border-bottom-style: solid;
 			align-self: center;
 		}
-                .preview-title {
-                    font-size: 2em;
-                }
-                .preview-title {
-                    font-size: 1.5em;
-                }
+		.preview-title {
+			font-size: 2em;
+		}
+		.preview-title {
+			font-size: 1.5em
+		}
 		#menu div {
 			cursor: pointer;
 			padding: 10px;
@@ -173,7 +173,7 @@
 			display: inline-block;
 			background-color:#00a6bc;
 			border-radius:10px;
-                        transition: 0.5s background-color;
+			transition: 0.5s background-color;
 		}
 		#menu div:hover {
 		    background-color:#ff7000;
