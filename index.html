@@ -36,14 +36,18 @@
 			window.onpopstate= (e)=>{ setPage(e.state); };
 			previewList.id= 'article-list';
 			const deepCopy= (json)=>JSON.parse(JSON.stringify(json));
+			const createNode= (html)=>{
+				const div= document.createElement('div');
+				div.innerHTML= html;
+				return div;
+			};
 			const processContent= (json)=>{
-				let ret= {};
-				for(let key in json) {
-					let div= document.createElement('div');
+				const ret= json;
+				['title','headline','content'].filter((x)=>x in json).map((key)=>{
+					const div= createNode(json[key]);
 					div.classList.add('flex-grow','column');
-					div.innerHTML= json[key];
 					ret[key]= div;
-				}
+				});
 				return ret;
 			};
 			const logo= document.querySelector('.logo');
@@ -62,14 +66,17 @@
 							const preview= document.createElement('div');
 							preview.classList.add('article-preview','clickable');
 							preview.addEventListener('click',()=>{visit(page);});
-							preview.append(((node)=>{
-								node.classList.add('preview-title');
-								return node;
-							})(json.title.cloneNode(true)));
-							preview.append(((node)=>{
-								node.classList.add('preview-headline');
-								return node;
-							})(json.headline));
+							{
+								const clone= json.title.cloneNode(true);
+								clone.classList.add('preview-title');
+								preview.append(clone);
+							}
+							if('img' in json) {
+								log('json has img');
+								preview.append(createNode('<img src="'+json.img+'"/>'));
+							}
+							json.headline.classList.add('preview-headline');
+							preview.append(json.headline);
 							previewList.append(preview);
 						})
 					))),
