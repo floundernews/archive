@@ -76,7 +76,7 @@
 								log('json has img');
 								const img= document.createElement('img');
 								img.src= json.img;
-								img.classList.add('preview-img');
+								img.classList.add('article-img');
 								preview.append(img);
 							}
 							json.headline.classList.add('preview-headline');
@@ -142,23 +142,23 @@
 		.logo {
 			color:white;
 			text-align:center;
-                        text-transform: uppercase;
-                        letter-spacing: 0.25em;
+			text-transform: uppercase;
+			letter-spacing: 0.25em;
 			display:block;
 			font-size:4em;
-                        font-family: 'EB Garamond', serif;
-                        font-weight: 800;
+			font-family: 'EB Garamond', serif;
+			font-weight: 800;
 			padding:24px;
 			background-color:#001032;
 			background-image: url('/img/logo.svg');
-                        background-position: -3.5em center;
-                        background-repeat: no-repeat;
-                        background-size: 7em;
-                        transition: background-position 0.75s;
+			background-position: -3.5em center;
+			background-repeat: no-repeat;
+			background-size: 7em;
+			transition: background-position 0.75s;
 		}
-                .logo:hover {
-                    background-position: 100vw center;
-                }
+		.logo:hover {
+			background-position: 100vw center;
+		}
 		.clickable {
 			cursor: pointer;
 		}
@@ -185,16 +185,16 @@
 			align-self: center;
 		}
 		.preview-title {
-                    font-family: 'Heebo', sans-serif;
-                    font-weight: 700;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 700;
 			font-size: 2em;
 		}
 		.preview-headline {
-                    font-family: 'Heebo', sans-serif;
-                    font-weight: 300;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
 			font-size: 1.5em;
 		}
-		.preview-img {
+		.article-img {
 			flex: 1 1 auto;
 			display:inline;
 			/*display:inline-block;*/
@@ -205,8 +205,8 @@
 			max-width: 90vw;
 		}
 		#menu div {
-                    font-family: 'Heebo', sans-serif;
-                    font-weight: 300;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
 			cursor: pointer;
 			padding: 10px;
 			/*height:auto;*/
@@ -215,32 +215,32 @@
 			background-color:#00a6bc;
 			border-radius:10px;
 			transition-property: background-color, color;
-                        transition-duration: 0.5s;
+			transition-duration: 0.5s;
 		}
 		#menu div:hover {
-		    background-color:#ffe050;
-                    color: black;
+			background-color:#ffe050;
+			color: black;
 		}
 		#title {
-                    font-family: 'Heebo', sans-serif;
-                    font-weight: 700;
-		    text-align:center;
-		    font-size:3em;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 700;
+			text-align:center;
+			font-size:3em;
 		}
-                #content h2 {
-                    font-family: 'Heebo', sans-serif;
-                    font-weight: 700;
-		    font-size:1.5em;
-                    margin: 0em;
-                    margin-top: 0.35em;
-                }
-                #content h3 {
-                    font-family: 'Heebo', sans-serif;
-                    font-weight: 300;
-		    font-size:1.25em;
-                    margin: 0em;
-                    margin-top: 0.35em;
-                }
+		#content h2 {
+			font-family: 'Heebo', sans-serif;
+			font-weight: 700;
+			font-size:1.5em;
+			margin: 0em;
+			margin-top: 0.35em;
+		}
+		#content h3 {
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			font-size:1.25em;
+			margin: 0em;
+			margin-top: 0.35em;
+		}
 		#page {
 			align-items:center;
 		}
@@ -251,6 +251,7 @@
 			text-align:center;
 		}
 		#content {
+			width:100%;
 			display:inline-block;
 			text-align:left;
 			display:flex;
@@ -260,47 +261,55 @@
 			margin:20px;
 		}
 		.byline {
-		    font-family: 'EB Garamond', serif;
-                    font-weight: 800;
-                    font-size: 15pt;
-		    margin-bottom:10px;
+			font-family:'EB Garamond',serif;
+			font-weight: 800;
+			font-size: 15pt;
+			margin-bottom:10px;
 		}
-                .image p {
-                    font-style: italic;
-                    padding-top: 0.25em;
-                    padding-bottom: 1em;
-                }
+		.image {
+			text-align:center;
+		}
+		.image img {
+			border-radius:10px;
+			max-width:90%;
+			max-height:300px;
+		}
+		.image p {
+			font-style: italic;
+			padding-top: 0.25em;
+			padding-bottom: 1em;
+		}
 		p {
-                    font-family: 'EB Garamond', serif;
-                    font-weight: 400;
-                    font-size: 15pt;
-		    max-width:700px;
-		    margin: 0.25em;
+			font-family: 'EB Garamond', serif;
+			font-weight: 400;
+			font-size: 15pt;
+			max-width:700px;
+			: 0.25em;
 		}
-                a {
-                    color: #0036ac;
-                    border-bottom: solid;
-                    border-width: 1px;
-                    border-bottom-color: white;
-                    text-decoration: none;
-                    transition-property: border-bottom-color;
-                    transition-duration: 0.5s;
-                    padding: 0pt;
+		a {
+			color: #0036ac;
+			border-bottom: solid;
+			border-width: 1px;
+			border-bottom-color: white;
+			text-decoration: none;
+			transition-property: border-bottom-color;
+			transition-duration: 0.5s;
+			padding: 0pt;
 		}
 		a:hover {
-                    border-bottom-color: #0036ac;
-                }
-                @media only screen and (max-width: 1100px) {
-                    .logo {
-                        font-size: 7vw;
-                        letter-spacing: 0em;
-                        transition: none;
-                        background-position: -30vw center;
-                    }
-                    .logo:hover {
-                        background-position: -30vw center;
-                    }
-                }
+			border-bottom-color: #0036ac;
+		}
+		@media only screen and (max-width:1100px) {
+			.logo {
+				font-size: 7vw;
+				letter-spacing: 0em;
+				transition: none;
+				background-position: -30vw center;
+			}
+			.logo:hover {
+				background-position: -30vw center;
+			}
+		}
 	</style>
 </head>
 <body class='column'>
