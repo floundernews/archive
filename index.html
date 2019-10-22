@@ -73,7 +73,10 @@
 							}
 							if('img' in json) {
 								log('json has img');
-								preview.append(createNode('<img src="'+json.img+'"/>'));
+								const img= document.createElement('img');
+								img.src= json.img;
+								img.classList.add('preview-img');
+								preview.append(img);
 							}
 							json.headline.classList.add('preview-headline');
 							preview.append(json.headline);
@@ -189,6 +192,12 @@
                     font-weight: 300;
 			font-size: 1.5em;
 		}
+		.preview-img {
+			display:inline-block;
+			border-radius:10px;
+			overflow: scroll;
+			height: 300px;
+		}
 		#menu div {
                     font-family: 'Heebo', sans-serif;
                     font-weight: 300;
@@ -249,9 +258,6 @@
                     font-size: 15pt;
 		    margin-bottom:10px;
 		}
-                .image img {
-                    width: 100%;
-                }
                 .image p {
                     font-style: italic;
                     padding-top: 0.25em;
