@@ -56,10 +56,16 @@
 			homeButton.innerHTML='Home';
 			[logo,homeButton].forEach((x)=>{x.addEventListener('click',()=>{visit('home');});});
 			menu.append(homeButton);
+			const fetchInit= {
+				method:'GET',
+				headers:new Headers()
+			};
+			[['pragma','no-cache'],['cache-control','no-cache'],['cache-control','no-store']].map(([x,y])=>{fetchInit.headers.append(x,y);});
+			log('fetchInit:',fetchInit);
 			Promise.all([
-				fetch('articles.json')
+				fetch('articles.json',fetchInit)
 					.then((resp)=>resp.json())
-					.then((pages)=>Promise.all(pages.map((page)=>fetch('articles/'+page+'.json')
+					.then((pages)=>Promise.all(pages.map((page)=>fetch('articles/'+page+'.json',fetchInit)
 						.then((resp)=>resp.json())
 						.then((json)=>{
 							json=processContent(json);
@@ -84,9 +90,9 @@
 							previewList.append(preview);
 						})
 					))),
-				fetch('static.json')
+				fetch('static.json',fetchInit)
 					.then((resp)=>resp.json())
-					.then((staticPages)=>Promise.all(staticPages.map(([buttonLabel,res])=>fetch('static/'+res+'.json')
+					.then((staticPages)=>Promise.all(staticPages.map(([buttonLabel,res])=>fetch('static/'+res+'.json',fetchInit)
 						.then((resp)=>resp.json())
 						.then((json)=>{
 							json= processContent(json);
