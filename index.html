@@ -51,7 +51,7 @@
 				});
 				return ret;
 			};
-			const logo= document.querySelector('.logo');
+			const logo= document.querySelector('#header-logo');
 			const homeButton= document.createElement('div');
 			homeButton.innerHTML='Home';
 			[logo,homeButton].forEach((x)=>{x.addEventListener('click',()=>{visit('home');});});
@@ -104,6 +104,9 @@
 	</script>
 	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,800|Heebo:300,700&display=swap" rel="stylesheet"> 
 	<style>
+		html {
+			scroll-behavior:smooth;
+		}
 		body {
 			margin: 0;
 			min-height:100vh;
@@ -140,14 +143,15 @@
 			top:0px;
 		}
 		.logo {
-			color:white;
-			text-align:center;
-			text-transform: uppercase;
-			letter-spacing: 0.25em;
-			display:block;
-			font-size:4em;
 			font-family: 'EB Garamond', serif;
 			font-weight: 800;
+		}
+		#header-logo {
+			font-size:4em;
+			color:white;
+			text-align:center;
+			letter-spacing: 0.25em;
+			display:block;
 			padding:24px;
 			background-color:#001032;
 			background-image: url('/img/logo.svg');
@@ -156,7 +160,7 @@
 			background-size: 7em;
 			transition: background-position 0.75s;
 		}
-		.logo:hover {
+		#header-logo:hover {
 			background-position: 100vw center;
 		}
 		.clickable {
@@ -300,24 +304,41 @@
 			border-bottom-color: #0036ac;
 		}
 		@media only screen and (max-width:1100px) {
-			.logo {
+			#header-logo {
 				font-size: 7vw;
 				letter-spacing: 0em;
 				transition: none;
 				background-position: -30vw center;
 			}
-			.logo:hover {
+			#header-logo:hover {
 				background-position: -30vw center;
 			}
+		}
+		#footer {
+			text-align:center;
+		}
+		#footer * {
+		
+		}
+		#footer>img {
+			transition:transform .2s;
+			transform:rotate(-90deg);
+		}
+		#footer>img:hover {
+			transform:translateY(-20px) rotate(-90deg);
 		}
 	</style>
 </head>
 <body class='column'>
-	<div class='logo clickable'>The Flounder</div>
+	<div id='header-logo' class='logo clickable'>THE FLOUNDER</div>
 	<div id=menu class='menu-stick'></div>
 	<div id=page class='column flex-grow'>
 		<div id=title></div>
 		<div id=content class='column flex-grow'></div>
+		<div id='footer' class='clickable' onclick='window.scrollTo(0,0);'>
+			<img src='/img/logo.svg' height='200px'/>
+			<div class='logo'>THE FLOUNDER</div>
+		</div>
 	</div>
 </body>
 </html>
