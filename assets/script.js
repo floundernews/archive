@@ -12,9 +12,14 @@ window.onload= ()=>{
 	const content= document.querySelector('#content');
 	const previewList= document.createElement('div');
 	const loc= window.location.href.split('#');
+	const createNode= (html)=>{
+		const div= document.createElement('div');
+		div.innerHTML= html;
+		return div;
+	};
 	let pageMap= {};
 	pageMap['home']= {
-		title:'Our Articles',
+		title:createNode('Our Articles'),
 		content:previewList
 	};
 	const setPage= (page)=>{
@@ -31,11 +36,6 @@ window.onload= ()=>{
 	window.onpopstate= (e)=>{ setPage(e.state); };
 	previewList.id= 'article-list';
 	const deepCopy= (json)=>JSON.parse(JSON.stringify(json));
-	const createNode= (html)=>{
-		const div= document.createElement('div');
-		div.innerHTML= html;
-		return div;
-	};
 	const processContent= (json)=>{
 		const ret= json;
 		['title','headline','content'].filter((x)=>x in json).map((key)=>{
@@ -55,7 +55,7 @@ window.onload= ()=>{
 		headers:new Headers()
 	};
 	[['pragma','no-cache'],['cache-control','no-cache'],['cache-control','no-store']].map(([x,y])=>{fetchInit.headers.append(x,y);});
-	log('fetchInit:',fetchInit);
+	// log('fetchInit:',fetchInit);
 	Promise.all([
 		fetch('articles.json',fetchInit)
 			.then((resp)=>resp.json())
@@ -73,7 +73,7 @@ window.onload= ()=>{
 						preview.append(clone);
 					}
 					if('img' in json) {
-						log('json has img');
+						// log('json has img');
 						const img= document.createElement('img');
 						img.src= json.img;
 						img.classList.add('article-img');
@@ -104,4 +104,7 @@ window.onload= ()=>{
 	]).then(()=>{
 		setPage(loc[1]);
 	});
+}
+function scrollToNoMenu(query) {
+	window.scrollTo(0,document.querySelector(query).getBoundingClientRect().y - document.querySelector('#menu').getBoundingClientRect().height);
 }
