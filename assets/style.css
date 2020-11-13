@@ -216,3 +216,9 @@ a:hover {
 #footer>img:hover {
 	transform:translateY(-20px) rotate(-90deg);
 }
+.hero-image img {
+	border-radius:10px;
+	max-width:90%;
+	max-height:600px;
+        margin: 20px;
+}
